@@ -1,5 +1,5 @@
 const mdLinks = require('../index.js');
-
+const transformPathAbsolute = require('../index.js');
 
 describe('mdLinks', () => {
 
@@ -15,3 +15,7 @@ describe('mdLinks', () => {
     });
   });
 });
+/*
+describe('transformPathAbsolute', () => {
+  it ('debería ser una función', => {})
+})*/
