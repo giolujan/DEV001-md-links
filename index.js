@@ -6,10 +6,9 @@ const path = require("path");
 const mdLinks = (inputPath, options) => {
   return new Promise((resolve, reject) => {
     //comprueba si una ruta existe o no
-    
+
     if (fs.existsSync(inputPath)) {
       transformPathAbsolute(inputPath);
-
       let extension = path.extname(inputPath);
       //Devuelve la extensión de la ruta. 
       if ((extension === '.md')) {
@@ -21,14 +20,13 @@ const mdLinks = (inputPath, options) => {
             console.log('error: ', err);
           } else {
             //const links = getmdLinks(inputPath);
-
+            const links = getmdLinks(inputPath);
             if (options.validate === true) {
               //console.log(resolve (validateLinks(links)));
-              const f = getmdLinks(inputPath);
-              resolve (validateLinks(f));
+              resolve(validateLinks(links));
             } else {
               resolve(links);
-            } 
+            }
           }
         });
       } else {
@@ -54,5 +52,5 @@ const transformPathAbsolute = (inputPath) => {
 };
 
 module.exports = {
-  mdLinks
+  mdLinks, transformPathAbsolute
 };

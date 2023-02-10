@@ -19,7 +19,7 @@ mdLinks('./index.js').then((result)=>{
 
 let isValidate = true
 mdLinks('./testReadme.md', { validate: isValidate }).then((result)=>{ 
-   console.log("holo", result);
+   console.log(result);
 })
 .catch((error)=>{
    console.log(error)

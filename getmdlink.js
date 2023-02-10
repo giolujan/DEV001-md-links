@@ -1,6 +1,6 @@
 const axios = require("axios");
 const fs = require("fs");
-const { resolve } = require("path");
+
 const readMd = (inputPath) => fs.readFileSync(inputPath, 'utf-8');
 
 // sacar los links del contenido con las propiedades href text file
@@ -28,7 +28,6 @@ const getmdLinks = (inputPath) => {
 };
 
 const validateLinks = (links) => {
-  
   // si opcion validate es true se valida con status ok
   // funcion landa
   const arrayPromise = links.map(link => {
@@ -40,8 +39,7 @@ const validateLinks = (links) => {
   });
 
   //  para resolver la promesa devolver un arreglo de links
-  Promise.all(arrayPromise).then(result => console.log("holi", result));
-
+  return (Promise.all(arrayPromise).then(result => {return result})) ;
 }
 
 
