@@ -115,7 +115,7 @@ describe('validateLinks', () => {
     expect(typeof validateLinks).toBe('function');
   });
 
-  it('extra los links dentro de un documento md.', () => {
+  it('extra los links dentro de un documento md.', async () => {
     const resultadoEsperado = [
       {
         href: 'https://es.wikipedia.org/wiki/Markdown',
@@ -140,7 +140,7 @@ describe('validateLinks', () => {
         ok: 'OK'
       }
     ]
-    const resultadoObtenido = validateLinks(
+    const resultadoObtenido = await validateLinks(
       [
         {
           href: 'https://es.wikipedia.org/wiki/Markdown',
@@ -158,7 +158,9 @@ describe('validateLinks', () => {
           file: 'C:/Users/Usuario/Desktop/Laboratoria/DEV001-md-links/testReadme.md'
         }
       ]  
-    ) 
-    expect(resultadoObtenido).toStrictEqual(resultadoEsperado)
+    )
+    return validateLinks(resultadoObtenido).then(result => {
+      expect(JSON.stringify(result)).toBe(JSON.stringify(resultadoEsperado));
+    })
   });
 })

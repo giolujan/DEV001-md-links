@@ -30,6 +30,7 @@ const getmdLinks = (inputPath) => {
 const validateLinks = (links) => {
   // si opcion validate es true se valida con status ok
   // funcion landa
+  console.log(links);
   const arrayPromise = links.map(link => {
     return axios.get(link.href).then(linkResponse => {
       return { ...link, status: linkResponse.status, ok: linkResponse.statusText };
